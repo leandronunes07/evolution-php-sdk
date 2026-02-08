@@ -36,6 +36,10 @@ Para rodar apenas os testes de DTO:
 ## Padrões de Código
 
 - Siga a PSR-12 para estilo de código.
+- Utilize o `php-cs-fixer` para padronizar o código antes de enviar o PR:
+```bash
+./vendor/bin/php-cs-fixer fix
+```
 - Utilize DTOs para novos métodos que recebem dados complexos.
 - Mantenha a documentação atualizada.
 

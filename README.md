@@ -3,6 +3,7 @@
 ![PHP Version](https://img.shields.io/badge/php-%3E%3D8.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
+![Style](https://img.shields.io/badge/code%20style-PSR--12-black)
 
 Unofficial PHP SDK for [Evolution API](https://github.com/EvolutionAPI/evolution-api). Simplify your WhatsApp automations with a robust, object-oriented PHP wrapper.
 
@@ -26,6 +27,9 @@ Developed with ❤️ by **[Agência Taruga](https://www.agenciataruga.com)** an
 - **Object-Oriented**: Fluid API design (`$client->instances()->create(...)`).
 - **Type Safety**: Use of DTOs (Data Transfer Objects) for safer payloads.
 - **Full Coverage**: Support for Messages, Groups, Profiles, Chatbots (Typebot, OpenAI, Dify, etc.), and Events.
+- **Webhook Handling**: Utility class to parse and process incoming webhook events.
+- **Logging**: PSR-3 compatible logging support for debugging requests.
+- **Standards**: PSR-12 Compliant code quality.
 - **Authentication**: Easy management of Global and Instance API Keys.
 
 ## 📦 Installation
