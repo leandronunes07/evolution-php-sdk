@@ -1,0 +1,46 @@
+{
+    "name": "leandronunes07/evolution-php-sdk",
+    "description": "Unofficial PHP SDK for Evolution API",
+    "keywords": [
+        "evolution-api",
+        "whatsapp",
+        "sdk",
+        "php",
+        "integration",
+        "chatbot",
+        "typebot"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Agência Taruga",
+            "email": "contato@agenciataruga.com",
+            "homepage": "https://www.agenciataruga.com"
+        },
+        {
+            "name": "Leandro Oliveira Nunes",
+            "email": "leandro@agenciataruga.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "symfony/var-dumper": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LeandroNunes\\Evolution\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LeandroNunes\\Evolution\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
