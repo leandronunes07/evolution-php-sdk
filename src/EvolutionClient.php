@@ -2,16 +2,16 @@
 
 namespace LeandroNunes\Evolution;
 
-use LeandroNunes\Evolution\Resources\Instance;
-use LeandroNunes\Evolution\Resources\Message;
-use LeandroNunes\Evolution\Resources\Group;
-use LeandroNunes\Evolution\Resources\Chat;
-use LeandroNunes\Evolution\Resources\Profile;
-use LeandroNunes\Evolution\Resources\Integrations;
-use LeandroNunes\Evolution\Resources\Metrics;
-use LeandroNunes\Evolution\Resources\Template;
-use LeandroNunes\Evolution\Resources\S3;
 use GuzzleHttp\HandlerStack;
+use LeandroNunes\Evolution\Resources\Chat;
+use LeandroNunes\Evolution\Resources\Group;
+use LeandroNunes\Evolution\Resources\Instance;
+use LeandroNunes\Evolution\Resources\Integrations;
+use LeandroNunes\Evolution\Resources\Message;
+use LeandroNunes\Evolution\Resources\Metrics;
+use LeandroNunes\Evolution\Resources\Profile;
+use LeandroNunes\Evolution\Resources\S3;
+use LeandroNunes\Evolution\Resources\Template;
 
 class EvolutionClient
 {

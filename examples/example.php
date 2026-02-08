@@ -2,8 +2,8 @@
 
 require 'vendor/autoload.php';
 
-use LeandroNunes\Evolution\EvolutionClient;
 use LeandroNunes\Evolution\Config;
+use LeandroNunes\Evolution\EvolutionClient;
 
 // 1. Configure the Client
 $config = new Config(

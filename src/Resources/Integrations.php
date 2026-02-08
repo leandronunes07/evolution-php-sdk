@@ -2,21 +2,20 @@
 
 namespace LeandroNunes\Evolution\Resources;
 
-use LeandroNunes\Evolution\HttpClient;
 use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Chatwoot;
-use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Typebot;
-use LeandroNunes\Evolution\Resources\Integrations\Chatbot\OpenAi;
 use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Dify;
-use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Flowise;
-use LeandroNunes\Evolution\Resources\Integrations\Chatbot\N8N;
 use LeandroNunes\Evolution\Resources\Integrations\Chatbot\EvoAi;
 use LeandroNunes\Evolution\Resources\Integrations\Chatbot\EvolutionBot;
-use LeandroNunes\Evolution\Resources\Integrations\Webhook;
-use LeandroNunes\Evolution\Resources\Integrations\Events\Ws;
-use LeandroNunes\Evolution\Resources\Integrations\Events\Rabbitmq;
-use LeandroNunes\Evolution\Resources\Integrations\Events\Sqs;
+use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Flowise;
+use LeandroNunes\Evolution\Resources\Integrations\Chatbot\N8N;
+use LeandroNunes\Evolution\Resources\Integrations\Chatbot\OpenAi;
+use LeandroNunes\Evolution\Resources\Integrations\Chatbot\Typebot;
 use LeandroNunes\Evolution\Resources\Integrations\Events\Nats;
 use LeandroNunes\Evolution\Resources\Integrations\Events\Pusher;
+use LeandroNunes\Evolution\Resources\Integrations\Events\Rabbitmq;
+use LeandroNunes\Evolution\Resources\Integrations\Events\Sqs;
+use LeandroNunes\Evolution\Resources\Integrations\Events\Ws;
+use LeandroNunes\Evolution\Resources\Integrations\Webhook;
 
 class Integrations extends BaseResource
 {

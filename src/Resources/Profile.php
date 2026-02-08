@@ -7,7 +7,7 @@ class Profile extends BaseResource
     public function fetchProfile(string $instance, string $number): array
     {
         return $this->httpClient->request('POST', "chat/fetchProfile/{$instance}", [
-            'json' => ['number' => $number]
+            'json' => ['number' => $number],
         ]);
     }
 

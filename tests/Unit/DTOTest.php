@@ -2,14 +2,13 @@
 
 namespace Tests\Unit;
 
-use LeandroNunes\Evolution\Config;
-use LeandroNunes\Evolution\EvolutionClient;
-use LeandroNunes\Evolution\DTO\Message\TextMessageDTO;
-use LeandroNunes\Evolution\DTO\Message\MediaMessageDTO;
-use LeandroNunes\Evolution\DTO\Message\TemplateMessageDTO;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use LeandroNunes\Evolution\Config;
+use LeandroNunes\Evolution\DTO\Message\MediaMessageDTO;
+use LeandroNunes\Evolution\DTO\Message\TextMessageDTO;
+use LeandroNunes\Evolution\EvolutionClient;
 use PHPUnit\Framework\TestCase;
 
 class DTOTest extends TestCase
@@ -27,7 +26,7 @@ class DTOTest extends TestCase
     public function testSendTextWithDTO()
     {
         $mock = new MockHandler([
-            new Response(200, [], json_encode(['key' => '123']))
+            new Response(200, [], json_encode(['key' => '123'])),
         ]);
         $handlerStack = HandlerStack::create($mock);
 
@@ -59,7 +58,7 @@ class DTOTest extends TestCase
     public function testSendMediaWithDTO()
     {
         $mock = new MockHandler([
-            new Response(200, [], json_encode(['key' => 'media123']))
+            new Response(200, [], json_encode(['key' => 'media123'])),
         ]);
         $handlerStack = HandlerStack::create($mock);
 

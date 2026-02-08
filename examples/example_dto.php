@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use LeandroNunes\Evolution\EvolutionClient;
 use LeandroNunes\Evolution\Config;
-use LeandroNunes\Evolution\DTO\Message\TextMessageDTO;
 use LeandroNunes\Evolution\DTO\Message\MediaMessageDTO;
+use LeandroNunes\Evolution\DTO\Message\TextMessageDTO;
+use LeandroNunes\Evolution\EvolutionClient;
 
 $config = new Config(
     baseUrl: 'https://api.example.com',

@@ -26,7 +26,7 @@ class Instance extends BaseResource
         // Uses Override Auth
         return $this->httpClient->request('GET', 'instance/fetchInstances', [
             'query' => $query,
-            'auth_type' => 'instance_override'
+            'auth_type' => 'instance_override',
         ]);
     }
 

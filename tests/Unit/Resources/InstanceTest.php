@@ -2,12 +2,12 @@
 
 namespace LeandroNunes\Evolution\Tests\Unit\Resources;
 
-use LeandroNunes\Evolution\Config;
-use LeandroNunes\Evolution\EvolutionClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Middleware;
+use GuzzleHttp\Psr7\Response;
+use LeandroNunes\Evolution\Config;
+use LeandroNunes\Evolution\EvolutionClient;
 use PHPUnit\Framework\TestCase;
 
 class InstanceTest extends TestCase

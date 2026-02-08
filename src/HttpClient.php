@@ -2,20 +2,25 @@
 
 namespace LeandroNunes\Evolution;
 
-use LeandroNunes\Evolution\Exceptions\HttpException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
+use LeandroNunes\Evolution\Exceptions\HttpException;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 class HttpClient
 {
     private Client $client;
+    private LoggerInterface $logger;
 
     public function __construct(
         private Config $config,
         ?HandlerStack $handler = null
     ) {
+        $this->logger = $config->getLogger() ?? new NullLogger();
+
         $options = [
             'base_uri' => $config->getBaseUrl(),
             'timeout' => $config->getTimeout(),
@@ -54,12 +59,25 @@ class HttpClient
 
         $options = $this->injectAuth($options, $authType);
 
+        $this->logger->info("Sending Request: {$method} {$endpoint}", [
+            'options' => $options, // Be careful with sensitive data in prod, but for SDK debug it's useful
+        ]);
+
         try {
             $response = $this->client->request($method, $endpoint, $options);
             $contents = $response->getBody()->getContents();
 
+            $this->logger->info("Received Response: {$method} {$endpoint}", [
+                'status' => $response->getStatusCode(),
+                'body' => $contents,
+            ]);
+
             return json_decode($contents, true) ?: [];
         } catch (RequestException $e) {
+            $this->logger->error("Request Failed: {$method} {$endpoint}", [
+                'error' => $e->getMessage(),
+                'response' => $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null,
+            ]);
             $this->handleException($e, $endpoint);
         }
     }
@@ -75,22 +93,26 @@ class HttpClient
                 if ($this->config->getMetricsToken()) {
                     $options['auth'] = [$this->config->getMetricsUser(), $this->config->getMetricsToken()];
                 }
+
                 break;
 
             case 'instance_override':
                 // Fetch Instances uses specific apiKey if available, otherwise Global
                 $apiKey = $this->config->getInstanceApiKey() ?? $this->config->getGlobalApiKey();
                 $headers['apikey'] = $apiKey;
+
                 break;
 
             case 'global':
             default:
                 // Default: Global API Key
                 $headers['apikey'] = $this->config->getGlobalApiKey();
+
                 break;
         }
 
         $options['headers'] = $headers;
+
         return $options;
     }
 

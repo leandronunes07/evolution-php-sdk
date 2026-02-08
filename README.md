@@ -74,7 +74,9 @@ print_r($response);
 - **Groups**: Create, Update, Participants, Settings.
 - **Integrations**: 
     - **Events**: Webhook, RabbitMQ, SQS, Websocket.
+    - **Events**: Webhook, RabbitMQ, SQS, Websocket.
     - **Chatbots**: Typebot, OpenAI, Dify, Flowise, N8N, EvolutionBot.
+- **Utilities**: Webhook Handler (Parse incoming events).
 
 ## 🧪 Testing
 

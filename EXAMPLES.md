@@ -13,6 +13,7 @@ Este documento fornece exemplos práticos de como utilizar todos os recursos do 
 - [Integrações (Typebot, OpenAI, etc)](#integrações)
 - [Templates](#templates)
 - [Storage (S3)](#storage-s3)
+- [Recebendo Webhooks (Novo)](#recebendo-webhooks)
 
 ---
 
@@ -28,9 +29,30 @@ $config = new Config(
     baseUrl: 'https://api.seudominio.com',
     globalApiKey: 'SUA_GLOBAL_API_KEY',
     instanceApiKey: 'OPCIONAL_INSTANCE_KEY' // Apenas para fetchInstances globais
+$config = new Config(
+    baseUrl: 'https://api.seudominio.com',
+    globalApiKey: 'SUA_GLOBAL_API_KEY',
+    instanceApiKey: 'OPCIONAL_INSTANCE_KEY', // Apenas para fetchInstances globais
+    logger: $myPsr3Logger // Opcional: Instância de LoggerInterface (Monolog, etc)
 );
 
 $client = new EvolutionClient($config);
+```
+
+### Exemplo com Monolog (opcional)
+
+```php
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$log = new Logger('evolution');
+$log->pushHandler(new StreamHandler('path/to/your.log', Logger::DEBUG));
+
+$config = new Config(
+    baseUrl: '...',
+    globalApiKey: '...',
+    logger: $log
+);
 ```
 
 ---
@@ -165,4 +187,36 @@ $template = new TemplateMessageDTO(
 );
 
 $client->messages()->sendTemplate('minha-instancia-01', $template);
+```
+
+---
+
+## Recebendo Webhooks
+
+O SDK fornece um `WebhookHandler` para facilitar o parse dos dados recebidos.
+
+```php
+use LeandroNunes\Evolution\WebhookHandler;
+
+// Captura o corpo da requisição (ex: php://input)
+$rawJson = file_get_contents('php://input');
+
+$handler = new WebhookHandler();
+
+try {
+    $event = $handler->parse($rawJson);
+    
+    // Acessando propriedades tipadas
+    echo "Evento: " . $event->event; // MESSAGES_UPSERT, CONNECTION_UPDATE, etc
+    echo "Instância: " . $event->instance;
+
+    // Dados específicos do evento
+    if ($event->event === 'MESSAGES_UPSERT') {
+        print_r($event->data);
+    }
+    
+} catch (\InvalidArgumentException $e) {
+    http_response_code(400); // Bad Request
+    echo "Payload inválido";
+}
 ```

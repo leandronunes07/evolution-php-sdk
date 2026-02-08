@@ -11,7 +11,8 @@ class Config
         public ?string $metricsUser = 'METRICS_USER',
         public ?string $metricsToken = null, // Password for metrics
         public int $timeout = 30,
-        public array $customHeaders = []
+        public array $customHeaders = [],
+        public ?\Psr\Log\LoggerInterface $logger = null
     ) {
         $this->baseUrl = rtrim($baseUrl, '/');
     }
@@ -49,5 +50,10 @@ class Config
     public function getCustomHeaders(): array
     {
         return $this->customHeaders;
+    }
+
+    public function getLogger(): ?\Psr\Log\LoggerInterface
+    {
+        return $this->logger;
     }
 }

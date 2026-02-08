@@ -5,7 +5,7 @@
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-if (!$data) {
+if (! $data) {
     http_response_code(400);
     exit('Invalid JSON');
 }
@@ -25,6 +25,7 @@ switch ($event) {
 
     case 'qrcode.updated':
         $qrcode = $data['data']['qrcode'] ?? '';
+
         // Save QR Code...
         break;
 }

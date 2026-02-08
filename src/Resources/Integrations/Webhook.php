@@ -13,7 +13,7 @@ class Webhook extends BaseResource
                 'enabled' => $enabled,
                 'url' => $url,
                 'events' => $events,
-            ], $options)
+            ], $options),
         ]);
 
         return $this->httpClient->request('POST', "webhook/set/{$instance}", ['json' => $body]);
